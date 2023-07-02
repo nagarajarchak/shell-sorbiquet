@@ -1,7 +1,5 @@
 import os
-
-BASH_RC_FILE_NAME = ".bashrc"
-BASH_ALIAS_FILE_NAME = ".shell-sobriquet-aliases.sh"
+from constant import BASH_RC_FILE_NAME, BASH_ALIAS_FILE_NAME
 
 home_dir = os.path.expanduser("~")
 bash_rc_file_path = f"{home_dir}/{BASH_RC_FILE_NAME}"
