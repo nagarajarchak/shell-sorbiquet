@@ -1,5 +1,6 @@
 import os
 import sys
+import subprocess
 
 BASH_RC_FILE_NAME = ".bash_profile"
 BASH_ALIAS_FILE_NAME = ".shell-sobriquet-aliases.sh"
@@ -33,10 +34,10 @@ def create_empty_alias_script() -> None:
         open(f"{home_dir}/{BASH_ALIAS_FILE_NAME}", "a").close()
 
 def register_alias(alias: str, sh_command: str) -> None:
-    alias_str = f'alias {alias} = "{sh_command}"'
+    alias_str = f'\n\nalias {alias}="{sh_command}"'
     write_string_to_file(bash_alias_file_path, alias_str, "a")
+    subprocess.Popen(f"source ~/{BASH_ALIAS_FILE_NAME}", shell = True)
 
 def main():
     cmd_args = sys.argv
-    print(cmd_args)
     register_alias(cmd_args[1], cmd_args[2])
