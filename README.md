@@ -4,7 +4,7 @@
 ## Setup
 
 
-1. Download the .whl file present in - 
+1. Download the .whl file present in 
 
         
         dist/shell_sobriquet-1.0-py3-none-any.whl
