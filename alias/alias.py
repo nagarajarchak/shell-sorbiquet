@@ -41,6 +41,8 @@ def register_alias(alias: str, sh_command: str) -> None:
 def validate_input_args(input_args: list) -> None:
     if len(input_args) != 3:
         print("Invalid number of input arguments provided.")
+    if not input_args[2].contains('"'):
+        print("Shell command must be provided in double quotes.")
 
 def main():
     cmd_args = sys.argv
