@@ -48,3 +48,4 @@ def main():
     cmd_args = sys.argv
     validate_input_args(cmd_args)
     register_alias(cmd_args[1], cmd_args[2])
+    print("Completed aliasing!")
