@@ -50,7 +50,6 @@ def create_empty_alias_script() -> None:
 def register_alias(alias: str, sh_command: str) -> None:
     alias_str = f'\n\nalias {alias}="{sh_command}"'
     write_string_to_file(bash_alias_file_path, alias_str, "a")
-    subprocess.Popen(f"source ~/{BASH_ALIAS_FILE_NAME}", shell = True)
 
 def validate_input_args(input_args: list) -> bool:
     validated = True
