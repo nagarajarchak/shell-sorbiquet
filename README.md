@@ -26,6 +26,10 @@
 
     Argument 2 - Any shell command in double quotes
 
+4. Restart your terminal.
+
+## Support
+This tool is presently supported on mac and linux based systems only.
 
 ## Sample Usage
 
