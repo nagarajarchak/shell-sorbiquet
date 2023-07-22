@@ -38,14 +38,17 @@ def register_alias(alias: str, sh_command: str) -> None:
     write_string_to_file(bash_alias_file_path, alias_str, "a")
     subprocess.Popen(f"source ~/{BASH_ALIAS_FILE_NAME}", shell = True)
 
-def validate_input_args(input_args: list) -> None:
+def validate_input_args(input_args: list) -> bool:
+    validated = True
     if len(input_args) != 3:
         print("Invalid number of input arguments provided.")
-    if not input_args[2].contains('"'):
+        validated = False
+    if '"' in input_args[2]:
         print("Shell command must be provided in double quotes.")
+        validated = False
+    return validated
 
 def main():
     cmd_args = sys.argv
-    validate_input_args(cmd_args)
-    register_alias(cmd_args[1], cmd_args[2])
-    print("Completed aliasing!")
+    if validate_input_args(cmd_args):
+        register_alias(cmd_args[1], cmd_args[2])
