@@ -13,6 +13,20 @@ contents = f"\n\nif [ -f ~/{BASH_ALIAS_FILE_NAME} ]; then\n" \
            "fi\n"
 
 def check_file_contains_string(file_path: str, phrase: str) -> bool:
+    """
+    This function checks if a given string is present in the
+    given file path.
+
+    Parameters
+    ----------
+    :param file_path: The file path to check for string
+    :param phrase: The string phrase to check for existance
+
+    Returns
+    -------
+    A boolean indicating if the string is present or not
+    """
+
     if phrase in open(file_path).read():
         return True
     return False
@@ -42,9 +56,6 @@ def validate_input_args(input_args: list) -> bool:
     validated = True
     if len(input_args) != 3:
         print("Invalid number of input arguments provided.")
-        validated = False
-    if '"' in input_args[2]:
-        print("Shell command must be provided in double quotes.")
         validated = False
     return validated
 
