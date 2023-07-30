@@ -1,15 +1,13 @@
 import os
 import sys
 import subprocess
-
-BASH_RC_FILE_NAME = ".bash_profile"
-BASH_ALIAS_FILE_NAME = ".shell-sobriquet-aliases.sh"
+import constant as c
 
 home_dir = os.path.expanduser("~")
-bash_rc_file_path = f"{home_dir}/{BASH_RC_FILE_NAME}"
-bash_alias_file_path = f"{home_dir}/{BASH_ALIAS_FILE_NAME}"
-contents = f"\n\nif [ -f ~/{BASH_ALIAS_FILE_NAME} ]; then\n" \
-           f"\t. ~/{BASH_ALIAS_FILE_NAME}\n" \
+bash_rc_file_path = f"{home_dir}/{c.BASH_RC_FILE_NAME}"
+bash_alias_file_path = f"{home_dir}/{c.BASH_ALIAS_FILE_NAME}"
+contents = f"\n\nif [ -f ~/{c.BASH_ALIAS_FILE_NAME} ]; then\n" \
+           f"\t. ~/{c.BASH_ALIAS_FILE_NAME}\n" \
            "fi\n"
 
 def check_file_contains_string(file_path: str, phrase: str) -> bool:
