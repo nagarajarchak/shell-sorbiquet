@@ -50,7 +50,7 @@ def create_empty_alias_script() -> None:
     """
 
     if not os.path.exists(bash_rc_file_path):
-        open(f"{home_dir}/{BASH_ALIAS_FILE_NAME}", "a").close()
+        open(f"{home_dir}/{c.BASH_ALIAS_FILE_NAME}", "a").close()
 
 def register_alias(alias: str, sh_command: str) -> None:
     """
@@ -64,7 +64,7 @@ def register_alias(alias: str, sh_command: str) -> None:
 
     alias_str = f'\n\nalias {alias}="{sh_command}"'
     write_string_to_file(bash_alias_file_path, alias_str, "a")
-    subprocess.Popen(f"source ~/{BASH_ALIAS_FILE_NAME}", shell = True)
+    subprocess.Popen(f"source ~/{c.BASH_ALIAS_FILE_NAME}", shell = True)
 
 def validate_input_args(input_args: list) -> bool:
     """
