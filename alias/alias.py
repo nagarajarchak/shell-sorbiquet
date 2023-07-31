@@ -29,7 +29,7 @@ def register_alias(alias: str, sh_command: str) -> None:
     :param sh_command: The shell command to be written to file
     """
 
-    alias_str = f'\n\nalias {alias}="{sh_command}"'
+    alias_str = f'alias {alias}="{sh_command}"\n'
     u.write_string_to_file(bash_alias_file_path, alias_str, "a")
     subprocess.Popen(f"source ~/{c.BASH_ALIAS_FILE_NAME}", shell = True)
 
