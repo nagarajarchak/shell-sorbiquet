@@ -34,11 +34,24 @@ def register_alias(alias: str, sh_command: str) -> None:
     u.write_string_to_file(bash_alias_file_path, alias_str, "a")
     subprocess.Popen(f"source ~/{c.BASH_ALIAS_FILE_NAME}", shell = True)
 
+def list_alias() -> None:
+    if os.path.exists(bash_alias_file_path):
+        with open(f"{home_dir}/{c.BASH_ALIAS_FILE_NAME}", "a") as f:
+            content = f.readlines()
+            print(content)
+            print(type(content))
+
 def main():
     """
     This main entry point function.
     """
 
     cmd_args = sys.argv
-    if v.validate_input_args(cmd_args):
+    
+    if not v.validate_input_args(cmd_args):
+        exit()
+    
+    if cmd_args[1] == c.LIST:
+        pass
+    else:
         register_alias(cmd_args[1], cmd_args[2])
