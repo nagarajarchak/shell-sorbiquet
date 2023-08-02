@@ -3,6 +3,7 @@ import sys
 import subprocess
 import alias.constant as c
 import alias.utility as u
+import alias.validate as v
 
 home_dir = os.path.expanduser("~")
 bash_rc_file_path = f"{home_dir}/{c.BASH_RC_FILE_NAME}"
@@ -33,20 +34,14 @@ def register_alias(alias: str, sh_command: str) -> None:
     u.write_string_to_file(bash_alias_file_path, alias_str, "a")
     subprocess.Popen(f"source ~/{c.BASH_ALIAS_FILE_NAME}", shell = True)
 
-def validate_input_args(input_args: list) -> bool:
-    """
-    This function validates input arguments.
-
-    Parameters
-    ----------
-    :param input_args: The input arguments to validate
-    """
-
-    validated = True
-    if len(input_args) != 3:
-        print("Invalid number of input arguments provided.")
-        validated = False
-    return validated
+def list_alias() -> None:
+    if os.path.exists(bash_alias_file_path):
+        with open(f"{home_dir}/{c.BASH_ALIAS_FILE_NAME}", "r") as f:
+            content = f.readlines()
+            print("List of aliases:")
+            for line in content:
+                line_split = line.split("=")
+                print(f"Alias: {line_split[0].split()[-1]}, Command: {line_split[1][1:-2]}")
 
 def main():
     """
@@ -54,5 +49,11 @@ def main():
     """
 
     cmd_args = sys.argv
-    if validate_input_args(cmd_args):
+    
+    if not v.validate_input_args(cmd_args):
+        exit()
+    
+    if cmd_args[1] == c.LIST:
+        list_alias()
+    else:
         register_alias(cmd_args[1], cmd_args[2])
