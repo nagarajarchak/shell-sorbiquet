@@ -36,10 +36,12 @@ def register_alias(alias: str, sh_command: str) -> None:
 
 def list_alias() -> None:
     if os.path.exists(bash_alias_file_path):
-        with open(f"{home_dir}/{c.BASH_ALIAS_FILE_NAME}", "a") as f:
+        with open(f"{home_dir}/{c.BASH_ALIAS_FILE_NAME}", "r") as f:
             content = f.readlines()
-            print(content)
-            print(type(content))
+            print("List of aliases:")
+            for line in content:
+                line_split = line.split("=")
+                print(f"Alias: {line_split[0].split()[-1]}, Command: {line_split[1][1:-2]}")
 
 def main():
     """
@@ -52,6 +54,6 @@ def main():
         exit()
     
     if cmd_args[1] == c.LIST:
-        pass
+        list_alias()
     else:
         register_alias(cmd_args[1], cmd_args[2])
