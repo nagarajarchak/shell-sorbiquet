@@ -28,13 +28,23 @@
 
 4. Restart your terminal.
 
-## Support
-This tool is presently supported on mac and linux based systems only.
+## Usage
 
-## Sample Usage
+Register an alias:
+
+    alias-it <name-of-alias> "<shell-command>"
+
+List aliases & their commands:
+
+    alias-it list
+
+## Sample
 
     > alias-it say-hi "echo Hello World!" 
     > say-hi
     > Hello World!
+
+## Support
+This tool is presently supported on mac and linux based systems only.
 
 *Feel free to raise a pull request if you'd like to contribute.*
