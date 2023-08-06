@@ -38,10 +38,17 @@ def list_alias() -> None:
     if os.path.exists(bash_alias_file_path):
         with open(f"{home_dir}/{c.BASH_ALIAS_FILE_NAME}", "r") as f:
             content = f.readlines()
-            print("List of aliases:")
-            for line in content:
-                line_split = line.split("=")
-                print(f"Alias: {line_split[0].split()[-1]}, Command: {line_split[1][1:-2]}")
+            if len(content) != 0:
+                print("List of aliases:")
+                for line in content:
+                    line_split = line.split("=")
+                    print(f"Alias: {line_split[0].split()[-1]}, Command: {line_split[1][1:-2]}")
+            else:
+                print("No aliases registered.")
+
+def clear_alias() -> None:
+    open(f"{home_dir}/{c.BASH_ALIAS_FILE_NAME}", "w").close()
+    print(f"Successfully cleared alias file: {home_dir}/{c.BASH_ALIAS_FILE_NAME}")
 
 def main():
     """
@@ -55,5 +62,7 @@ def main():
     
     if cmd_args[1] == c.LIST:
         list_alias()
+    elif cmd_args[1] == c.CLEAR:
+        clear_alias()
     else:
         register_alias(cmd_args[1], cmd_args[2])
