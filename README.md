@@ -38,6 +38,10 @@ List aliases & their commands:
 
     alias-it list
 
+Clear all registered aliases:
+
+    alias-it clear
+
 ## Sample
 
     > alias-it say-hi "echo Hello World!" 
