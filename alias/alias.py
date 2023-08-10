@@ -35,6 +35,10 @@ def register_alias(alias: str, sh_command: str) -> None:
     subprocess.Popen(f"source ~/{c.BASH_ALIAS_FILE_NAME}", shell = True)
 
 def list_alias() -> None:
+    """
+    This is a function to list aliases all.
+    """
+
     if os.path.exists(bash_alias_file_path):
         with open(f"{home_dir}/{c.BASH_ALIAS_FILE_NAME}", "r") as f:
             content = f.readlines()
@@ -47,6 +51,10 @@ def list_alias() -> None:
                 print("No aliases registered.")
 
 def clear_alias() -> None:
+    """
+    This is a function to clear all aliases from shell file.
+    """
+
     open(f"{home_dir}/{c.BASH_ALIAS_FILE_NAME}", "w").close()
     print(f"Successfully cleared alias file: {home_dir}/{c.BASH_ALIAS_FILE_NAME}")
 
