@@ -15,7 +15,7 @@ def write_string_to_file(file_path: str, contents: str, mode: str) -> None:
 
 def write_list_to_file(file_path: str, contents_list: list, mode: str) -> None:
     """
-    This function writes a given string to file.
+    This function writes a given list of strings to file.
 
     Parameters
     ----------
