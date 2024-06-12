@@ -58,6 +58,32 @@ def clear_alias() -> None:
     open(f"{home_dir}/{c.BASH_ALIAS_FILE_NAME}", "w").close()
     print(f"Successfully cleared alias file: {home_dir}/{c.BASH_ALIAS_FILE_NAME}")
 
+def clear_single_alias(alias_name: str) -> None:
+    """
+    This is a function to clear a single alias.
+    
+    Parameters
+    ----------
+    :param alias_name: The alias to be removed from shell file.
+    """
+
+    if os.path.exists(bash_alias_file_path):
+        updated_alias_list = list()
+        with open(f"{home_dir}/{c.BASH_ALIAS_FILE_NAME}", "r") as f:
+            content = f.readlines()
+            if len(content) != 0:
+                for line in content:
+                    line_split = line.split("=")
+                    if line_split[0].split()[-1] != alias_name:
+                        updated_alias_list.append(line)
+                if len(updated_alias_list) == len(content):
+                    print(f"No alias found for: {alias_name}")
+                else:
+                    u.write_list_to_file(bash_alias_file_path, updated_alias_list, "w")
+                    print(f"Alias '{alias_name}' deleted successfully!")
+            else:
+                print("No aliases registered.")
+
 def main():
     """
     This main entry point function.
@@ -70,7 +96,9 @@ def main():
     
     if cmd_args[1] == c.LIST:
         list_alias()
-    elif cmd_args[1] == c.CLEAR:
+    elif cmd_args[1] == c.CLEAR and not cmd_args[2]:
         clear_alias()
+    elif cmd_args[1] == c.CLEAR and cmd_args[2]:
+        clear_single_alias(cmd_args[2])
     else:
         register_alias(cmd_args[1], cmd_args[2])

@@ -36,7 +36,7 @@ Register an alias:
 
 List aliases & their commands:
 
-    alias-it list
+    alias-it ls
 
 Clear all registered aliases:
 
