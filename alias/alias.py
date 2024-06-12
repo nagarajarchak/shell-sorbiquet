@@ -78,6 +78,9 @@ def clear_single_alias(alias_name: str) -> None:
                         updated_alias_list.append(line)
                 if len(updated_alias_list) == len(content):
                     print(f"No alias found for: {alias_name}")
+                else:
+                    u.write_list_to_file(bash_alias_file_path, updated_alias_list, "w")
+                    print(f"Alias '{alias_name}' deleted successfully!")
             else:
                 print("No aliases registered.")
 
@@ -93,7 +96,7 @@ def main():
     
     if cmd_args[1] == c.LIST:
         list_alias()
-    elif cmd_args[1] == c.CLEAR:
+    elif cmd_args[1] == c.CLEAR and not cmd_args[2]:
         clear_alias()
     elif cmd_args[1] == c.CLEAR and cmd_args[2]:
         clear_single_alias(cmd_args[2])
