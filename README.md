@@ -42,6 +42,10 @@ Clear all registered aliases:
 
     alias-it clear
 
+Clear a single alias:
+
+    alias-it clear <name-of-alias>
+
 ## Sample
 
     > alias-it say-hi "echo Hello World!" 
