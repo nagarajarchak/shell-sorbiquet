@@ -34,6 +34,8 @@ Register an alias:
 
     alias-it <name-of-alias> "<shell-command>"
 
+###### *Note: shell-command should be within double quotes.*
+
 List aliases & their commands:
 
     alias-it ls
