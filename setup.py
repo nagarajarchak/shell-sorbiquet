@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup(
-    name="shell-sobriquet",
+    name="shell-util",
     version="1.0",
     description="A tool that lets you alias your day to day shell commands.",
     author="Nagaraj Archak",
