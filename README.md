@@ -7,13 +7,13 @@
 1. Download the .whl file present in 
 
         
-        dist/shell_sobriquet-1.0-py3-none-any.whl
+        dist/shell_util-1.0-py3-none-any.whl
 
 
 2. Install the package with -
 
 
-        pip install shell_sobriquet-1.0-py3-none-any.whl
+        pip install shell_util-1.0-py3-none-any.whl
 
 
 3. Alias your shell commands with -
